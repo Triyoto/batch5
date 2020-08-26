@@ -5,40 +5,30 @@
 <meta charset="ISO-8859-1">
 <title>Login Smartspring</title>
 </head>
+
 <body>
+<form th:action="@{/login/action}">
+	<h1>Login User</h1>
+	<table>
+	<tr>
+		<td>Username</td>
+		<td><input type="text" name="username" id="userId"></td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><input type="password" name="password" id="passId"></td>
+	</tr>
+	<tr> 
+		<td></td>
+		<td><button type="submit" value="submit">Submit</button>&nbsp;	
+		<button type="reset">Reset</button>
+		</td>
+		
+	</tr>	
+	</table>
+</form>
 
 
- <form th:action="@{/login/action}">
- <h1>Login User</h1>
- <table>
 
- 	<tr> <!-- baris -->
- 	<td>Username</td><!-- kolom -->
- 	<td><input type="text" name="username" id="userId"> </td>
- 	</tr>
- 	
- 	
- 	<tr> <!-- baris 2 -->
- 	<td>Password</td><!-- kolom -->
- 	<td><input type="text" name="password" id="passId"> </td>
- 	</tr>
- 	
- 	<tr>
- 	<td></td>
- 	<td><button type="submit" value="submit">Submit</button> &nbsp; &nbsp;<input type="reset"></td>
-	
- 	</tr>
- 	
- 
- 	
- 	
- </table>
- </form>
- <br>
- <br>
- 
- 
-
-
- 
+</body>
 </html>

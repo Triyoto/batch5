@@ -4,27 +4,28 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-// JPA = spesifikasi 
 
+//JPA itu spesifikasi, hibernate ....
+//JPA untuk integrasi dengan prangkat lain
 @Entity
+//entity utk menghubungkan?
+//entiti termasuk konsep yg ada di JPA
 @Table(name="T_OFFICE")
 public class OfficeModel {
-	
-	
+	//1.buat method variable
+	//utk pemakaian nama tabel dan kolom
 	@Id
-	@Column(name="Nomor_Office")
+	@Column (name="Nomor_Office")
 	private int nomorOffice;
 	
-	@Column(name="Nama_Office")
+	@Column (name="Nama_Office")
 	private String namaOffice;
 	
-	@Column(name="Total_Penjualan")
+	@Column (name="Total_Penjualan")
 	private int totalPenjualan;
 	
-	
-	// Buat Tabel rumah sakit :int noKamar,String namaPasien, int hargaKamar;
-	
-	
+	//2. lalu buat POJO getter and setter
+	//untuk memberi nilai tabel dan kolom
 	public int getNomorOffice() {
 		return nomorOffice;
 	}
@@ -47,5 +48,4 @@ public class OfficeModel {
 	
 	
 	
-
 }

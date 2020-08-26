@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Pegawai</title>
+</head>
+<body>
+<form th:action="@{/pegawai/create}">
+	<table>
+	<tr>
+		<td>No</td>
+		<td><input type="number" name="no" id="no"></td>
+	</tr>
+	<tr>
+		<td>NIK</td>
+		<td><input type="text" name="nik" id="nik"></td>
+	</tr>
+	
+	<tr>
+		<td>Nama</td>
+		<td><input type="text" name="nama" id="nama"></td>
+	</tr>
+	
+	<tr> 
+		<td></td>
+		<td><button type="submit" value="submit">Submit</button>&nbsp;	
+		<button type="reset">Reset</button>
+		</td>
+		
+	</tr>	
+	</table>
+</form>
+<br>
+
+
+
+</body>
+</html>

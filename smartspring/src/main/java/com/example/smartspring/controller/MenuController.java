@@ -1,10 +1,10 @@
 package com.example.smartspring.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,96 +15,72 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.smartspring.model.PasienModel;
 import com.example.smartspring.service.PasienService;
-// controller pindah halaman /maping/ pemberian url
 
 @Controller
 public class MenuController {
 	
-	
-	@RequestMapping("/pasien/list")
-
-	public String list() {
-		String home = "pasien/list";
-		return home;
-	}
-	
-	
 	@Autowired
+	//bikin nama baru utk PasienService dengan nama pasienService
 	private PasienService pasienService;
 	
-	@RequestMapping("/menu/Menu1")
-
-	public String menu1(HttpServletRequest request, Model model) {
+	@RequestMapping ("/menu/Menu1")
+	public String menu1 (HttpServletRequest request, Model model) {
+		String mintaNomor = request.getParameter("noPasien");
 		
-
-		String mintanamaPasien = request.getParameter("namaPasien");
-		model.addAttribute("namaPasienLempar", mintanamaPasien);
+		model.addAttribute("noLempar", mintaNomor);
 		
-		
-		String menu = "menu/Menu1";
+		String menu ="menu/Menu1";
 		return menu;
 	}
 	
-	@RequestMapping ("/pasien/create")
-	public String  pasienCreate (HttpServletRequest request ,Model model)  throws ParseException{
-		
-		String kodePasien = request.getParameter("kodePasien");
+	@RequestMapping("/pasien/create")
+	public String pasienCreate(HttpServletRequest request, Model model) throws ParseException {
+		String nomorPasien = request.getParameter("noPasien");
 		String namaPasien = request.getParameter("namaPasien");
 		String gender = request.getParameter("gender");
-		String kategoriPasien = request.getParameter("kategoriPasien");
-		int biaya = Integer.parseInt(request.getParameter("biaya"));
-		
+		String kategori = request.getParameter("kategori");
+		int biaya = Integer.parseInt(request.getParameter("biaya")) ;
+		//Date tanggalLahir = Date.valueOf(request.getParameter("tanggalLahir")) ;
 		//konversi date
-		String tanggalLahir =request.getParameter("tanggalLahir");
-		SimpleDateFormat formateDate = new SimpleDateFormat("yyyy-MM-dd");
-		Date tanggalLahirDate = formateDate.parse(tanggalLahir);
+		String tanggalLahir = request.getParameter("tanggalLahir");
+		SimpleDateFormat formatDate = new SimpleDateFormat ("yyy-MM-dd");
+		Date tanggalLahirDate = formatDate.parse(tanggalLahir);
 		System.out.println(tanggalLahirDate);
 		
-		//instance PasienModel
-		
+		//instance pasienModel
 		PasienModel pasienModel = new PasienModel();
 		
-		// simpan ke masing2 kolom di data base
-		
-		pasienModel.setKodePasien(kodePasien);
+		//simpan ke masing2 kolom di database
+		pasienModel.setKodePasien(nomorPasien);
 		pasienModel.setNamaPasien(namaPasien);
 		pasienModel.setGender(gender);
-		pasienModel.setKategoriPasien(kategoriPasien);
+		pasienModel.setKategoriPasien(kategori);
 		pasienModel.setBiaya(biaya);
 		pasienModel.setTanggalLahir(tanggalLahirDate);
+		
 		
 		//save
 		this.pasienService.create(pasienModel);
 		
-		
-		//List
+		//list
+		//
 		this.ListPasien(model);
-	
+		
 		String html = "/pasien/list";
-		
 		return html;
-		
-		
 	}
+	
 	//@RequestMapping ("/pasien/list")
-		//void krn ga return apapun
-		//model buat ambil data dari backend ke frontend
-	
-	
-	  public void ListPasien (Model model) { 
+	//void krn ga return apapun
+	//model buat ambil data dari backend ke frontend
+	public void ListPasien (Model model) {
 		//kalo datanya banyak, instance pake list
 		//klo 1, pake new biasa.
-		  
-		  
-		  List<PasienModel> pasienModelList = new ArrayList<PasienModel>(); 
+		List<PasienModel> pasienModelList = new ArrayList<PasienModel>();
 		//disini data udah kebaca
-		  
-		  
 		pasienModelList = pasienService.readData();
-	  model.addAttribute("pasienModelList",pasienModelList);
-	  
-	  }
-	 
-	
-
+		
+		//penamaan pasienModelList buat penamaan doang di lempar ke depan
+		model.addAttribute("pasienModelList", pasienModelList);
+	}
 }

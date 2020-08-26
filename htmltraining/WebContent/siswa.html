@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Siswa</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>indexTest</title>
+<link href="webjars/bootstrap/4.1.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<style>
+</style>
+<body>
+	<H2>Data Siswa</H2>
+	<center>
+		<a th:href="@{/addsiswa}" class="btn btn-primary">Tambah Siswa</a>
+	</center>
+	<br>
+	<table class="table" border="1">
+		<thead class="thead-dark">
+			<tr>
+				<th>NIM</th>
+				<th>Nama Siswa</th>
+				<th>Kelas</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!--  looping -->
+			<tr th:each="siswaModel:${siswaModelList}">
+				<td th:text="${siswaModel.nimSiswa}"></td>
+				<td th:text="${siswaModel.namaSiswa}"></td>
+				<td th:text="${siswaModel.kelas}"></td>
+				<td>
+					<button class="btn btn-success" data-toggle="modal"
+						data-target="#">Edit</button>
+					<button class="btn btn-danger">Delete</button>
+					<button type="button" class="btn btn-info">
+						<a class="text-white" th:href="@{'/detil/' + ${siswaModel.nimSiswa}}">Detil</a>
+					</button>
+				</td>
+			</tr>
+			<!--  /looping -->
+		</tbody>
+	</table>
+	
+<!-- Modal Edit -->
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="modalSayaLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalSayaLabel">Edit Siswa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nim</label>
+            <input type="text" class="form-control" id="nimSiswaEdit" placeholder="nim" disabled>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Nama</label>
+            <input type="text" class="form-control" id="namaSiswaEdit" th:placeholder="test">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Kelas</label>
+            <input type="text" class="form-control" id="kelasSiswaEdit" th:placeholder="test">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Detil -->
+
+<div class="modal fade" id="detilModal" tabindex="-1" role="dialog" aria-labelledby="modalSayaLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalSayaLabel">Detil Siswa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nim</label>
+            <input type="text" class="form-control" id="nimSiswaEdit" placeholder="nim" disabled>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Nama</label>
+            <input type="text" class="form-control" id="namaSiswaEdit" th:placeholder="test">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Kelas</label>
+            <input type="text" class="form-control" id="kelasSiswaEdit" th:placeholder="test">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>

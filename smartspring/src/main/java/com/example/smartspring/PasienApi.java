@@ -21,131 +21,133 @@ import com.example.smartspring.model.PasienModel;
 import com.example.smartspring.service.PasienService;
 
 @RestController
+//di sini boleh dimapping
 @RequestMapping("/api/pasien")
 public class PasienApi {
-
+	
+	//			| DI API NAMANYA :
+	//INSERT	| POST
+	//READ		| GET
 	@Autowired
 	private PasienService pasienService;
-
-// POST || INSERT
-	@PostMapping("/post") 
-	@ResponseStatus(code = HttpStatus.CREATED)
 	
+	//POST || INSERT
+	//map untuk masang sebuah pesan
+	@PostMapping ("/post") //digunakan untuk  me-mapping suatu method sebagai fungsi insert data dalam API
+	//kalo insert, pakai create
+	//Http status
+	//bagusnya dipakein code, misal 200 itu code buat berhasil insert
+	@ResponseStatus(code=HttpStatus.CREATED)
 	public Map<String, Object> postMapping(@RequestBody PasienModel pasienModel) {
-	
+		//post itu insert kalo dalam API
+		
+		//maksudnya ketika data ditambahkan, tar masuknya ke pasienModel
 		this.pasienService.create(pasienModel);
-
+		
 		Map<String, Object> map = new HashMap<String, Object>();
-		// dengan hashmap kita bisa buat pesan ketika berhasil
-
+		//dengan hashmap kita bisa buat pesan ketika berhasil
+		
 		map.put("success", Boolean.TRUE);
 		map.put("pesan", "datanya sudah masuk");
 		return map;
-
+		
 	}
-
-// GET || READ
 	
+	//GET || READ
 	@GetMapping("/get")
-	@ResponseStatus(code = HttpStatus.OK)
-	public List<PasienModel> getMapping() {
-
+	//kalo mau lihat data, pake OK
+	//200
+	@ResponseStatus(code=HttpStatus.OK)
+	public List<PasienModel> getMapping(){
+		
 		List<PasienModel> pasienModelList = new ArrayList<PasienModel>();
 		pasienModelList = this.pasienService.readData();
 		return pasienModelList;
 	}
-
-// PUT || UPDATE
-	@PutMapping("/put")
-	@ResponseStatus(code = HttpStatus.OK)
-	public Map<String, Object> putMapping(@RequestBody PasienModel pasienModel) {
-
-		this.pasienService.update(pasienModel);
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("success", Boolean.TRUE);
-		map.put("pesan", "Berhasil UPDATE");
-		return map;
-
-	}
-
-// DELETE ||
-
-	@DeleteMapping("/delete/{kodePasien}")
-	public Map<String, Object> remove(@PathVariable String kodePasien) {
-
-		this.pasienService.remove(kodePasien);
-
-		Map<String, Object> map = new HashMap<String, Object>();// dengan hashmap kita bisa buat pesan ketika berhasil
-
-		map.put("success", Boolean.TRUE);
-		map.put("delete", "Berhasil DELETE");
-		return map;
-
-	}
-
-// GET || READ SELECTION  tampilkan data berdasarkan Nama dari urutan terbesar hingga terkecil(Z-A)
-
-	@GetMapping("/getseleksi")
-	@ResponseStatus(code = HttpStatus.OK)
-
-	public List<PasienModel> getUrutMapping() {
-		// instance PasienModel dengan nama pasienModelList
-		List<PasienModel> pasienModelList = new ArrayList<PasienModel>();
-
-		pasienModelList = this.pasienService.method1();
-		return pasienModelList;
-	}
-
-// GET || READ SELECTION LIKE
-	@GetMapping("/getNamaMengandung")
-	@ResponseStatus(code = HttpStatus.OK)
-
-	public List<PasienModel> getNama() {
-
-		List<PasienModel> pasienModelList = new ArrayList<PasienModel>();
-
-		pasienModelList = this.pasienService.cariDataMengandung();
-		return pasienModelList;
-	}
 	
-//GET Nama  depannya huruf a
-	 @GetMapping("/getNamaDepanA")
-	 @ResponseStatus(code = HttpStatus.OK)
-	 
-	 public List<PasienModel> getNamaDepan() {
-		 
-		 List <PasienModel> pasienModelList = new ArrayList<PasienModel>();
-		 
-		 
-		pasienModelList = this.pasienService.namaDepannyaA();
-		return pasienModelList;
-		 
-	 }
-// GET biaya lebih 2000
-	  @GetMapping("/getBiayaLebih2000")
-	  @ResponseStatus( code = HttpStatus.OK)
-	  
-	  public List<PasienModel> getBiayaLebih2000(){
-		  
-		List<PasienModel> pasienModelList = new ArrayList<PasienModel>();
+		//pada dasarnya update tu isi data kan?
+		//nah update pakai fungsi yg hampir sama kaya pas create data
 		
-		  pasienModelList = this.pasienService.biayaLebih2000();
-		  return pasienModelList;
-		  
-	  }
-	  
-// GET biaya 500-1000
-	  @GetMapping("/getBiayaAntara")
-	  @ResponseStatus( code = HttpStatus.OK)
-	  
-	  public List<PasienModel> getBiayaAntara(){
-		  
-		  List<PasienModel> pasienModelList =new ArrayList<PasienModel>();
-		  
-		   pasienModelList = this.pasienService.biayaAntara();
-		   return pasienModelList;
-		   
-		  
-	  }
+		
+		//PUT || UPDATE
+		@PutMapping ("/put")
+		@ResponseStatus(code=HttpStatus.OK)
+		public Map<String, Object> putMapping(@RequestBody PasienModel pasienModel){
+			
+			this.pasienService.update(pasienModel);
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("success", Boolean.TRUE);
+			map.put("pesan", "update berhasil");
+			return map;
+		}
+		
+		//DELETE
+		@DeleteMapping("/delete/{kodePasien}")
+		//path itu lokasi kan, lebih spesifik
+		//pathVariable harus pasang sebagai ID/primary key
+		//oh iya delete nya tergantung yg di service
+		public Map<String, Object> remove(@PathVariable String kodePasien){
+			
+			this.pasienService.remove(kodePasien);
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("success", Boolean.TRUE);
+			map.put("delete", "Berhasil");
+			return map;
+		}
+	
+	//tamilkan data berdasarkan Nama dari urutan terbesar hingga terkecil(Z-A)
+	
+		//GET || READ
+		@GetMapping("/getUrut")
+		//kalo mau lihat data, pake OK
+		//200
+		@ResponseStatus(code=HttpStatus.OK)
+		public List<PasienModel> getUrutMapping(){
+			
+			List<PasienModel> pasienModelList = new ArrayList<PasienModel>();
+			pasienModelList = this.pasienService.pasienUrut();
+			return pasienModelList;
+		}
+		
+		
+		@GetMapping("/getNamaMengandung")
+		@ResponseStatus(code=HttpStatus.OK)
+		public List<PasienModel> getMengandung(){
+			
+			List<PasienModel> pasienModelList = new ArrayList<PasienModel>();
+			pasienModelList = this.pasienService.cariDataMengandung();
+			return pasienModelList;
+		}
+		
+		
+		@GetMapping("/getNamaDepan")
+		@ResponseStatus(code=HttpStatus.OK)
+		public List<PasienModel> getHuruf(){
+			
+			List<PasienModel> pasienModelList = new ArrayList<PasienModel>();
+			pasienModelList = this.pasienService.cariDataA();
+			return pasienModelList;
+		}
+		
+		@GetMapping("/getBiayaLebihBesar")
+		@ResponseStatus(code=HttpStatus.OK)
+		public List<PasienModel> getBiayaBesar(){
+			
+			List<PasienModel> pasienModelList = new ArrayList<PasienModel>();
+			pasienModelList = this.pasienService.cariDataBesar();
+			return pasienModelList;
+		}
+		
+		@GetMapping("/getBiayaDan")
+		@ResponseStatus(code=HttpStatus.OK)
+		public List<PasienModel> getBiayaNegasi(){
+			
+			List<PasienModel> pasienModelList = new ArrayList<PasienModel>();
+			pasienModelList = this.pasienService.cariDataNegasi();
+			return pasienModelList;
+		}
 }

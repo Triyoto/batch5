@@ -3,34 +3,32 @@ package com.example.smartspring.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller 
+@Controller
+//kelasnya di mapping, biar ga bingung 
+//mapping kelas perfolder aja
 public class OfficeController {
 	
-	
 	//master/modul
-	// pembuatan controller dibuat per master (per folder office misalnya
-	// walaupun di dalam office ada folder karyawan 
-	// 404 error file tidak ditemukan
-	// 500 error service
-	@RequestMapping("/utamaOffice")
-
-	public String utamaOffice() {
-		String html = "utamaOffice";
-		return html;
-	}
-
-	@RequestMapping("/office/penjualanOffice")
-
-	public String penjualanOffice() {
-		String html = "/office/penjualanOffice";
+	//misal ada projek namanya kampus
+	//master namanya fakultas
+	//modul namanya SI TIF
+	
+	//jadi pembuatan controller itu per master
+	//permaster, per controller
+	
+	//404 tdk ditemukan direktori/mapping tdk ditemukan
+	//500 server bermasalah
+	@RequestMapping ("/penjualan")
+	public String penjualan() {
+		//pemanggilan yg ini harus benar
+		String html = "office/penjualanOffice";
 		return html;
 	}
 	
-	@RequestMapping("/office/karyawan/karyawanOffice")
-
-	public String karyawanOffice() {
-		String html = "/office/karyawan/karyawanOffice";
+	//buat sesuai lokasi/direktori aja biar ga crash/bingung
+	@RequestMapping ("/karyawan")
+	public String karyawan() {
+		String html = "office/karyawan/karyawanOffice";
 		return html;
 	}
-
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Validasi JS</title>
+</head>
+<body>
+<h1 style="color :blue ;">Contoh Validasi JS</h1>
+
+<h2 style="color : red ; font-size: 12px; display: none " id="idValidasi">Tidak boleh kosong</h2>
+
+
+User name : <input type="text" placeholder="Masukan username" name="username" id="username">
+<button type="button" onclick="validate();"> Validasi</button>
+
+</body>
+
+<script type="text/javascript">
+
+
+	function validate (){
+		
+		var username= document.getElementById("username");
+		var idValidasi= document.getElementById("idValidasi");
+		
+		if (username.value =="") {
+			idValidasi.style.display="block";
+			
+		}else {
+			idValidasi.style.display="none";
+			
+			
+		}
+	}
+
+</script>
+</html>

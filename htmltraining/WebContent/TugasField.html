@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Form</title>
+</head>
+<body>
+	<h3 style="color: gray">Buat Account Baru</h3>
+	<hr />
+	<br> For international applicants, please contact our
+	<a href="https://www.google.com">International Officer</a> regarding
+	application procedure.This registration form is meant for Indonesian
+	Citizen only.
+	<br> Harap menggunakan Account lama anda jika anda telah membuat
+	pendaftaran sebelumnya
+	<h3 style="color: gray">Login</h3>
+	<hr />
+
+	<table>
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: red; font-size: 12px; display: none"
+					id="idValidasiUsername">Tidak boleh kosong</p></td>
+		</tr>
+		<tr>
+			<td>Username</td>
+			<td><input type="text" name="username" id="username"></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: gray; font-size: 12px; display: block">Username
+					yang Anda inginkan (hanya dapat terdiri dari huruf,angka dan
+					_).Username tidak boleh mengandung spasi</p></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: red; font-size: 12px; display: none"
+					id="idValidasiPassword">Tidak boleh kosong</p></td>
+		</tr>
+		<tr>
+
+			<td>Password</td>
+			<td><input type="password" name="password" id="password"></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: gray; font-size: 12px; display: block">Masukan
+					Password. Password minimal terdiri dari 6 karakter dan case
+					sensitive (A beda dengan a).</p></td>
+		</tr>
+
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: red; font-size: 12px; display: none"
+					id="idValidasiUlangiPassword">Tidak boleh kosong</p></td>
+		</tr>
+		<tr>
+			<td>Ulangi Password</td>
+			<td><input type="password" name="ulangipassword"
+				id="ulangipassword"></td>
+
+		</tr>
+
+	</table>
+
+	<h3 style="color: gray">Identitas</h3>
+	<hr />
+
+	<table>
+		<tr>
+			<td>Nama sesuai identitas</td>
+			<td><input type="text"></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: gray; font-size: 12px; display: block">
+					Nama sesuai yang tertulis di identitas, tanpa gelar
+					akademisi/sertifikasi<br>Nama diawali dengan huruf besar di
+					awal dan setelah spasi, contoh Abc Def, contoh salah abc def ,ABC
+					DEF
+				</p></td>
+		</tr>
+
+		<tr>
+			<td>Nama Sesuai ijazah</td>
+			<td><input type="text"></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: gray; font-size: 12px; display: block">
+					Nama sesuai yang tertulis di identitas, tanpa gelar
+					akademisi/sertifikasi<br>Nama diawali dengan huruf besar di
+					awal dan setelah spasi, contoh Abc Def, contoh salah abc def ,ABC
+					DEF
+				</p></td>
+		</tr>
+
+		<tr>
+			<td>Jenis Identitas</td>
+			<td><select>
+					<option>--PILIH--</option>
+					<option value=1>KTP</option>
+					<option value=2>SIM</option>
+
+			</select></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: gray; font-size: 12px; display: block">Pilih
+					identitas Anda.Identitas dibawa ketika ujian /daftar ualang</p></td>
+		</tr>
+
+		<tr>
+			<td>Nomor Identitas</td>
+			<td><input type="number"></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Kewarganegaraan</td>
+			<td><select>
+					<option>--PILIH--</option>
+					<option value=1>Amerika</option>
+					<option value=2>Brazil</option>
+					<option value=3>China</option>
+					<option value=4>Denmark</option>
+					<option value=5>Indonesia</option>
+					<option value=6>India</option>
+			</select></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Jenis Kelamin</td>
+			<td><input type="radio" name="Jenis kelamin">Pria<br>
+				<input type="radio" name="Jenis kelamin">Wanita</td>
+
+		</tr>
+		<tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<td>Tanggal Lahir</td>
+		<td><input type="date"></td>
+		</tr>
+	</table>
+
+	<h3 style="color: gray">Kontak</h3>
+	<hr />
+
+	<table>
+		<tr>
+			<td>Alamat Tetap</td>
+			<td><input type="text"></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+
+		<tr>
+			<td>Negara</td>
+			<td><select>
+					<option>--PILIH--</option>
+					<option value=1>Amerika</option>
+					<option value=2>Brazil</option>
+					<option value=3>China</option>
+					<option value=4>Denmark</option>
+					<option value=5>Indonesia</option>
+					<option value=6>India</option>
+			</select></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+
+		<tr>
+			<td>Provinsi</td>
+			<td><select>
+					<option>--PILIH--</option>
+					<option value=1>Banten</option>
+					<option value=2>DKI Jakarta</option>
+					<option value=3>Jawa Barat</option>
+					<option value=4>Jawa Tengah</option>
+					<option value=5>Jawa Timur</option>
+					<option value=6>Bali</option>
+
+
+			</select></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+
+		<tr>
+			<td>Kabupaten/Kotamadya</td>
+			<td><select>
+					<option>--PILIH--</option>
+					<option value=1>Tangerang</option>
+					<option value=2>Jakarta</option>
+					<option value=3>Bandung</option>
+					<option value=4>Pekalongan</option>
+					<option value=5>Pati</option>
+					<option value=6>Denpasar</option>
+			</select></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+
+		<tr>
+			<td>Alamat saat ini</td>
+			<td><input type="text"></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+
+		<tr>
+			<td>No. telepon</td>
+			<td><input type="tel"></td>
+
+		</tr>
+
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: gray; font-size: 12px; display: block">Nomor
+					telepon yang dapat dihubungi. pisahkan dengan , (Koma) jika ada
+					beberapa nomor</p></td>
+		</tr>
+		<tr>
+			<td>No. HP</td>
+			<td><input type="text"></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: gray; font-size: 12px; display: block">Nomor
+					handphone pisahkan dengan , (koma) jika ada beberapa nomor</p></td>
+		</tr>
+
+		<tr>
+			<td>Email</td>
+			<td><input type="email"></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: gray; font-size: 12px; display: block">Pastikan
+					alamat email Anda benar, email konfirmasi akan dikirim ke alamat
+					email tersebut</p></td>
+		</tr>
+		<tr>
+			<td>Ulangi Email</td>
+			<td><input type="email"></td>
+
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><p style="color: gray; font-size: 12px; display: block">Pastikan
+					alamat email Anda benar, email konfirmasi akan dikirim ke alamat
+					email tersebut</p></td>
+		</tr>
+
+		<tr>
+			<td>&nbsp;</td>
+			<td><button onclick="validate();">Simpan</button></td>
+		</tr>
+
+	</table>
+</body>
+<script type="text/javascript">
+	function validate() {
+
+		var username = document.getElementById("username");
+		var username = document.getElementById("password");
+		var username = document.getElementById("ulangipassword");
+		var idValidasiUsername = document.getElementById("idValidasiUsername");
+		var idValidasiPassword = document.getElementById("idValidasiPassword");
+		var idValidasiUlangiPassword = document.getElementById("idValidasiUlangiPassword");
+
+		if (username.value == "") {
+			idValidasiUsername.style.display = "block";
+		} else {
+			idValidasiUsername.style.display = "none";
+		}
+
+		if (password.value == "") {
+			idValidasiPassword.style.display = "block";
+		} else {
+			idValidasiPassword.style.display = "none";
+		}
+
+		if (ulangipassword.value == "") {
+			idValidasiUlangiPassword.style.display = "block";
+
+		}
+
+		else {
+			idValidasiUlangiPassword.style.display = "none";
+
+		}
+	}
+</script>
+</html>
